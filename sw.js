@@ -5,7 +5,7 @@ var fs = require('fs');
 var jsonfile = require('jsonfile');
 
 // 定义要扫描的目标文件夹
-var pathString = '/Users/zhangruirui/jsfile/words-from-the-heart/';
+var pathString = './words-from-the-heart/';
 
 // 用于存放所有心里话
 var writePathString = './heartwords.json';
