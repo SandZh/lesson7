@@ -36,6 +36,7 @@ fs.readdir(pathString, function(err, files) {
       // 读取json文件
       var content = jsonfile.readFileSync(pathString + jsonFiles[i]);
       jsonList.push(jsonFiles[i]);
+      console.log(content)
     } catch (err) {
       // 如果读取错误就把错误的文件名写入到errorFiles数组内
       errorFiles.push(jsonFiles[i]);
