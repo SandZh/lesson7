@@ -13,6 +13,8 @@ var writePathString = './heartwords.json';
 // 用于存放格式不正确的json文件名
 var errorPathString = './errorwords.json';
 
+//var jsonContentFile = './jsonContentFile.json';
+
 // 调用fs的readdir函数读取所有文件
 fs.readdir(pathString, function(err, files) {
   if (err) {
@@ -33,10 +35,9 @@ fs.readdir(pathString, function(err, files) {
   var errorFiles = [];
   for (var i = 0; i < jsonFiles.length; i++) {
     try {
-      // 读取json文件
+      // 读取json文件,content是一个变量，不是数组，哪来的遍历呢
       var content = jsonfile.readFileSync(pathString + jsonFiles[i]);
-      jsonList.push(jsonFiles[i]);
-      console.log(content)
+      jsonList.push(content);
     } catch (err) {
       // 如果读取错误就把错误的文件名写入到errorFiles数组内
       errorFiles.push(jsonFiles[i]);
@@ -48,6 +49,9 @@ fs.readdir(pathString, function(err, files) {
 
   // 将收集到的错误文件写入到一个json文件中
   jsonfile.writeFileSync(errorPathString, errorFiles);
+
+
+  //jsonfile.writeFileSync(jsonContentFile, content[i]);
 
   // 假如收集到的内容（json文件）格式乱怎么办？可以使用visual studio code的代码格式化插件自动调整格式，就会得出你想要的格式想过。
 });
